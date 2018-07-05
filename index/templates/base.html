@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>   
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+        <ul class="nav nav-pills">
+                <li role="presentation">
+                        <!-- <a href="{% url 'add' %}">
+                            添加数据</a> -->
+                    </li>
+                    <li role="presentation">
+                        <a href="{% url 'score' %}">
+                            返回32强所有队伍
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="{% url 'mostgoal_difference' %}">
+                            返回每组净胜球最多的队伍
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="{% url 'score_difference' %}">
+                            返回分差最大的三场比赛
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="{% url 'promotion' %}">
+                            返回每个小组晋级的两只球队(排名优先级：积分、净胜球、球队名)
+                        </a>
+                    </li>      
+              </ul>
+    {# 页面内容 #}
+    {% block content %}
+    {% endblock %}    
+</body>
+</html>

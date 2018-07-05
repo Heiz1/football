@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}比分差距最大的3场比赛记录{% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading" style="text-align: center;font-size: 25px">
+        比分差距最大的3场比赛记录(按照比赛日期逆序排序)
+    </div>
+        
+    <div class="panel-body">
+        <p></p>
+    </div>
+        
+        <!-- Table -->
+    <table class="table">
+        <tr>
+            <td></td>
+            <td>小组</td>
+            <td>主队</td>
+            <td>主队进球</td>
+            <td>客队进球</td>
+            <td>客队</td>
+            <td>比赛日期</td>
+        </tr>
+
+        {% for i in info %}
+        <tr>
+        <td></td>
+        <td>{{i.groups}}</td>
+        <td>{{i.HomeTeam}}</td>
+        <td>{{i.HomeTeam_score}}</td>
+        <td>{{i.VisitingTeams_score}}</td>
+        <td>{{i.VisitingTeams}}</td>
+        <td>{{i.time}}</td>
+        </tr>
+        {% endfor %}
+    </table>           
+</div>
+
+{% endblock %}

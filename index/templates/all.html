@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}积分榜{% endblock %}
+
+{% load staticfiles %}
+
+
+{% block content %}
+
+
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading" style="text-align: center;font-size: 25px">积分榜</div>
+        
+        <div class="panel-body">
+          <p></p>
+        </div>
+        
+        <!-- Table -->
+        <table class="table">
+          <tr>
+              <td>队伍</td>
+              <td>进球</td>
+              <td>失球</td>
+              <td>净胜球</td>
+              <td>积分</td>
+          </tr>
+
+          {% for team in context %}
+          <tr>
+            <td>{{team}}</td>
+            <td>{{team.goal}}</td>
+            <td>{{team.lost}}</td>
+            <td>{{team.goal_difference}}</td>
+            <td>{{team.score}}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        
+</div>
+
+    <div class="center-block" style="width:300px;">        
+            <ul class="pagination">
+                {# 上一页 #}
+                <li>
+                    {% if context.has_previous %}
+                    <a href="?page={{ context.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    {% else %}
+                        <span aria-hidden="true">&laquo;</span>
+                    {% endif %}
+                </li>
+
+                {# 全部页码 #}
+                {% for page_num in page_range %}
+                    {% if page_num == context.number %}
+                        <li class="active"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                    {% else %}
+                        {% if page_num == '...' %}
+                            <li><span>{{ page_num }}</span></li>
+                        {% else %}
+                            <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                
+                {# 下一页 #}
+                <li>
+                    {% if context.has_next %}        
+                    <a href="?page={{ context.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    {% else %}
+                        <span aria-hidden="true">&raquo;</span>
+                    {% endif %}
+                </li>
+                
+                
+            </ul>
+            
+
+
+        <p>
+            一共有{{ context.paginator.count }}项信息,
+            当前第{{ context.number }}页,共{{ context.paginator.num_pages }}页
+        </p>
+    </div>
+{% endblock %}    
+

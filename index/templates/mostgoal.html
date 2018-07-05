@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}每小组净胜球最多的队伍{% endblock %}
+
+
+{% load staticfiles %} 
+
+{% block content %}
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading" style="text-align: center;font-size: 25px">每小组净胜球最多的队伍</div>
+            
+    <div class="panel-body">
+        <p></p>
+    </div>
+            
+    <!-- Table -->
+    <table class="table">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>小组</td>
+            <td>队伍</td>
+        </tr>
+
+        {% for group,mostgoal_difference_team in mostgoal_difference_teams.items %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ group }}</td>
+            <td>{{ mostgoal_difference_team }}</td>
+        </tr>
+        {% endfor %}
+    </table>            
+</div>
+
+
+{% endblock %}
