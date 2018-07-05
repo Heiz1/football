@@ -48,9 +48,5 @@ class GameInfo(models.Model):
     class Meta:
         ordering = ['-time']    
 
-# class VisitingTeams(models.Model):
-#     country = models.CharField(max_length=30,verbose_name='球队')
-#     group_id = models.CharField(max_length=10,verbose_name='小组')
-#     score = models.OneToOneField(Score)
 
 

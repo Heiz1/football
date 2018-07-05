@@ -3,7 +3,7 @@ from .models import *
 from django.http import request, HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-
+# 返回导航页
 def index(request):
     return render(request, 'index.html')
 
@@ -178,6 +178,7 @@ def add(request):
     return HttpResponse('添加成功')
 
 
+# 删除数据
 def delete_data(request):
     data = Scores.objects.all()
     data.delete()
